@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Reminder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h2>Add Medication / Vaccine Reminder</h2>
+    <form method="POST">
+        {%csrf_token %}
+        <label>Medication/Vaccine Name:</label><br>
+        <input type="text" name="medication_name" required><br><br>
+       
+        <label>Dosage (e.g., 100mg, 2 pills, 0.5ml):</label><br>
+        <input type="text" name="dosage" required><br><br>
+
+        <label>Scheduled Time (HH:MM):</label><br>
+        <input type="time" name="scheduled_time" required><br><br>
+
+        <label>Reminder Time (HH:MM):</label><br>
+        <input type="time" name="reminder_time" required><br><br>
+
+        <label for="notification_type">Notification Method:</label><br>
+<select name="notification_type" id="notification_type">
+    <option value="EMAIL">Email</option>
+    <option value="SMS">SMS</option>
+</select>
+
+        <label>Phone Number (if SMS selected):</label><br>
+        <input type="text" name="phone_number" placeholder="+1234567890"><br><br>
+
+        <button type="submit">Save Reminder</button>
+    </form>
+    <br>
+    <a href="{% url 'reminder_list' %}">Back to Reminder List</a>
+</body>
+</html>

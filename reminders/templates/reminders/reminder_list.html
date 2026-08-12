@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Reminders</title>
+</head>
+<body>
+    <h2>My Medication & Vaccine Reminders</h2>
+    <a href="{% url 'reminder_create' %}">+ Add New Reminder</a>
+    <br><br>
+
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Medication</th>
+                <th>Dosage</th>
+                <th>Scheduled Time</th>
+                <th>Reminder Time</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reminder in reminders %}
+            <tr>
+                <td>{{ reminder.medication_name }}</td>
+                <td>{{ reminder.dosage }}</td>
+                <td>{{ reminder.scheduled_time }}</td>
+                <td>{{ reminder.reminder_time }}</td>
+                <td>{{ reminder.notification_type }}</td>
+                <td>
+                    <a href="{% url 'delete_reminder' reminder.pk %}" onclick="return confirm('Delete this reminder?');">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No reminders added yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
