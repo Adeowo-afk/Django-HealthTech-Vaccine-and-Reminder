@@ -21,3 +21,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('reminders.urls')),  # This maps http://127.0.0.1:8000/ to your reminders app
 ]
+
+
+
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('reminders.urls')),  # Makes the home page load your customer UI
+]
