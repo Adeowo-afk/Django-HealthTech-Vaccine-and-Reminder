@@ -43,8 +43,12 @@ def reminder_update(request, pk):
     return render(request, 'reminders/reminder_form.html', {'form': form, 'title': 'Edit Reminder'})
 
 # --- DELETE REMINDER ---
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import MedicationReminder
+
 @login_required
-def reminder_delete(request, pk):
+def delete_reminder(request, pk):
     reminder = get_object_or_404(MedicationReminder, pk=pk, user=request.user)
     if request.method == 'POST':
         reminder.delete()
