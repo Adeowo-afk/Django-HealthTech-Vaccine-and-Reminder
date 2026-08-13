@@ -48,7 +48,7 @@ from django.contrib.auth.decorators import login_required
 from .models import MedicationReminder
 
 @login_required
-def delete_reminder(request, pk):
+def reminder_delete(request, pk):
     reminder = get_object_or_404(MedicationReminder, pk=pk, user=request.user)
     if request.method == 'POST':
         reminder.delete()
@@ -108,3 +108,6 @@ def reminder_update(request, pk):
         form = ReminderForm(instance=reminder)
     
     return render(request, 'reminders/reminder_form.html', {'form': form, 'title': 'Edit Reminder'})
+
+
+
