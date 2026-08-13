@@ -1,7 +1,7 @@
 from django import forms
-from .models import VaccineReminder  # Make sure this matches your model name in models.py
+from .models import MedicationReminder
 
 class ReminderForm(forms.ModelForm):
     class Meta:
-        model = VaccineReminder
+        model = MedicationReminder
         fields = '__all__'
